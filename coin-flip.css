@@ -1,0 +1,30 @@
+
+.heads_img,
+.tails_img {
+    width: 100px;
+    height: 100px;
+}
+
+.heads_img:hover,
+.tails_img:hover {
+    filter: drop-shadow(7px 7px 5px rgba(0, 0, 0, 0.22));
+}
+
+.coins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.heads_btn,
+.tails_btn {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.headsBtn:hover {
+    /* box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px; */
+
+}
