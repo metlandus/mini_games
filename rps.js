@@ -3,6 +3,8 @@ const paper = document.querySelector('.paper-btn');
 const scissors = document.querySelector('.scissors-btn');
 const game = document.querySelector('.game');
 const result = document.querySelector('.result');
+let compScore = 0;
+let playerScore = 0;
 
 function getPlayerChoice(e) {
     if (e.target.classList.contains('rock-img')) {
@@ -21,24 +23,41 @@ function computerChoice() {
     return choices[randomIndex];
 }
 
+function restartGame() {
+    playerScore = 0;
+    compScore = 0;
+    result.innerHTML = "";
+}
+
+window.restartGame = restartGame;
+
 function rockPaperScissors(playerChoice) {
     if (!playerChoice) return; // If playerChoice is null, do nothing
-    console.log('Game started');
-    console.log('Player choice:', playerChoice);
     const computer = computerChoice();
-    console.log(`Player: ${playerChoice}, Computer: ${computer}`);
     if (playerChoice === computer) {
-        result.textContent = "It's a tie!";
+        result.innerHTML = `<h2>You and computer both choose ${playerChoice}.<span class="result-text">It's a Tie!</span></h2>
+        <div class="score">
+            <h3>Player: ${playerScore}</h3>
+            <h3>Computer: ${compScore}</h3>`;
+
     } else if (
         (playerChoice === 'Rock' && computer === 'Scissors') ||
         (playerChoice === 'Paper' && computer === 'Rock') ||
         (playerChoice === 'Scissors' && computer === 'Paper')
     ) {
-        result.innerHTML = `<h2>You choose ${playerChoice} and Computer choose ${computer}, ${playerChoice} beats ${computer}. You Win!</h2>`;
+        playerScore++;
+        result.innerHTML = `<h2>You choose ${playerChoice} and Computer choose ${computer}, ${playerChoice} beats ${computer}.<span class="result-text">You Win!</span></h2>
+        <div class="score">
+            <h3>Player: ${playerScore}</h3>
+            <h3>Computer: ${compScore}</h3>`;
     } else {
-        result.textContent = 'Computer wins!';
+        compScore++;
+        result.innerHTML = `<h2>You choose ${playerChoice} and Computer choose ${computer}, ${playerChoice} beats ${computer}.<span class="result-text">Computer Wins!</span></h2>
+        <div class="score">
+            <h3>Player: ${playerScore}</h3>
+            <h3>Computer: ${compScore}</h3>`;
     }
-    
+
 }
 
 game.addEventListener('click', (e) => {

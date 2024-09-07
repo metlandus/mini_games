@@ -22,3 +22,9 @@
 .btn:hover {
     filter: drop-shadow(7px 7px 9px rgba(0, 0, 0, 0.2));
 }
+
+.result-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(67, 1, 248);
+}
